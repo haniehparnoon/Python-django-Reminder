@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card-group">
+  <div class="card">
+    <h3 class="card-img-top" >title:{{task.title}} </h3>
+    <div class="card-body">
+      {% comment "" %}<h3 class="card-title">category:{{task.category}}</h3>{% endcomment %}
+      <p class="card-text">description:{{task.description}}</p>
+      <h5>Priority:{{task.Priority}}</h5>
+      
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">date:{{task.due_date}}</small>
+    </div>
+  </div> 
+</div>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for c in categoryTasks  %}
+<div class="card-group">
+  <div class="card">
+    <h1 class="card-img-top" >{{c}} </h1>
+    <div class="card-body">
+     {% comment "" %}
+      <a href="{% url 'task_detail' t.pk %}" class="btn btn-info">View Detail</a>
+     {% endcomment %}
+    </div>
+  </div> 
+</div>
+{% endfor %}
+{% endblock content %}

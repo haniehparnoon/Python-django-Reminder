@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <a href="?sort=1" class="btn btn-info m-2">Order List</a>
+  <a href="#" class="btn btn-info m-2" id="expired_tasks">ExpiredTasks</a>
+  <a href="#" class="btn btn-info m-2" id="unexpired_tasks">UnexpiredTasks</a>
+  <a href="#" class="btn btn-info m-2" id="last_tasks">LastTasks</a>
+</form>
+<ul id="mu_ul"></ul>
+
+
+{% for t in tasks %}
+<div class="card-group">
+  <div class="card">
+    <h3 class="card-img-top" >title:{{t.title}} </h3>
+    <div class="card-body">
+      {% comment "" %}<h5 class="card-title">category:{{t.category}}</h5>{% endcomment %}
+      {% comment "" %}<p class="card-text">{{t.description}} </p>{% endcomment %}
+      <a href="{% url 'task_detail' t.pk %}" class="btn btn-info">View Detail</a>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">date:{{t.due_date}}</small>
+    </div>
+  </div> 
+</div>
+{% endfor %}  
+{% endblock content %} 
+
+{% block script %}
+<script>
+    var CSRF_TOKEN = '{{ csrf_token }}';
+    var URL = "{% url 'task_list' %}"
+</script>
+<script src={% static 'todo/tasks.js' %}></script>
+{% endblock script %}   

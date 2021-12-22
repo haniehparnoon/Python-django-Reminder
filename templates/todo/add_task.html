@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <form  class="w-50 mt-5 ms-5 click_form" method="post">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Category</label>
+            <input  name="category" class="form-control" id="category">
+          </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Title</label>
+          <input name = "title" type="text" class="form-control" id="title" >
+        </div>
+         <div class="form-group">
+          <label for="exampleFormControlTextarea1">Description</label>
+          <textarea name = "description" class="form-control" id="description" rows="3"></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Priority</label>
+          <select name ="priority" class="form-control" id="priority">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="party">DATE</label>
+          <input name="due_date" id="due_date"  class="form-control" type="datetime-local" name="partydate">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary mt-3" id="send_fotm">Submit</button>
+        </div>
+       
+      </form>
+{% endblock content %}
+
+{% block script %}
+<script>
+    var CSRF_TOKEN = '{{ csrf_token }}';
+    var URL = "{% url 'add_task' %}"
+</script>
+<script src={% static 'todo/addtask.js' %}></script>
+{% endblock script %}
